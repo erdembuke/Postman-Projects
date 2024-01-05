@@ -1,48 +1,48 @@
-# API Test Projesi
+# API Test Projects
 
-Bu proje, **Postman** kullanılarak geliştirilmiş bir API test projesini içermektedir. Proje, [Restful Booker](https://restful-booker.herokuapp.com/) sitesindeki API'leri test etmek amacıyla oluşturulmuştur.
+These projects contain API test projects developed using **Postman**. The projects are created for the purpose of testing web services.
 
-# Proje 1 Detayları
+# Project 1 Details
 
-- **Geliştirici:** Erdem Büke
-- **Kullanılan Araç:** Postman
+- **Developer:** Erdem Buke
+- **Tool Used:** Postman
 - **API Base URL:** https://restful-booker.herokuapp.com/
 
-## Proje İçeriği
+## Project Content
 
-Proje, toplamda **8 adet request** (3 GET, 2 POST, 1 PATCH, 1 DELETE) içermektedir. Bu request'lerin her biri, Restful Booker API'lerinin farklı özelliklerini test etmek için tasarlanmıştır.
+The project includes a total of **8 requests** (3 GET, 2 POST, 1 PATCH, 1 DELETE). Each of these requests is designed to test different features of the Restful Booker APIs.
 
 ### 1. Authentication
-   - Kullanıcı girişi için token alma işlemi.
+   - Token retrieval for user login.
 
 ### 2. Create Booking
-   - Yeni bir rezervasyon oluşturma.
+   - Creating a new reservation.
 
 ### 3. Get Bookings
-   - Kayıtlı rezervasyonların id'lerini getirme.
+   - Retrieving the IDs of registered bookings.
 
 ### 4. Update Booking
-   - Var olan bir rezervasyonu güncelleme.
+   - Updating an existing reservation.
 
 ### 5. Partial Update Booking
-   - Rezervasyonun belirli alanlarını güncelleme.
+   - Partially updating specific fields of a reservation.
 
 ### 6. Delete Booking
-   - Var olan bir rezervasyonu silme.
+   - Deleting an existing reservation.
 
 ### 7. Get Booking By ID
-   - Belirli bir id degerindeki rezervasyonun detayli bilgilerini getirme.
+   - Retrieving detailed information for a reservation with a specific ID.
 
 ### 8. Health Check
-   - API'nin sağlığını kontrol etme.
+   - Checking the health of the API.
 
-## Nasıl Kullanılır
+## Steps to Run the Projects
 
-1. Proje dosyalarını bilgisayarınıza indirin.
-2. **Postman uygulamasını açın.**
-3. "Import" butonuna tıklayarak projeyi içeren **Collection dosyasını yükleyin.**
-4. Collection içindeki her bir request'i inceleyip, gerektiğinde güncelleyerek veya test ederek kullanabilirsiniz.
+1. Download the project files to your computer.
+2. **Open the Postman application.**
+3. Click the "Import" button and import the **Collection file** containing the project.
+4. You can review and test each request within the Collection by updating as needed.
 
-## Lisans
+## License
 
-Bu proje, [MIT lisansı](LICENSE) altında lisanslanmıştır. Detaylı bilgi için lisans dosyasını inceleyebilirsiniz.
+This project is licensed under the [MIT license](LICENSE). You can review the license file for detailed information.
