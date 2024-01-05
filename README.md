@@ -18,8 +18,8 @@ Proje, toplamda **8 adet request** (3 GET, 2 POST, 1 PATCH, 1 DELETE) içermekte
 ### 2. Create Booking
    - Yeni bir rezervasyon oluşturma.
 
-### 3. Get Booking
-   - Belirli bir rezervasyonun detaylarını getirme.
+### 3. Get Bookings
+   - Kayıtlı rezervasyonların id'lerini getirme.
 
 ### 4. Update Booking
    - Var olan bir rezervasyonu güncelleme.
@@ -30,8 +30,8 @@ Proje, toplamda **8 adet request** (3 GET, 2 POST, 1 PATCH, 1 DELETE) içermekte
 ### 6. Delete Booking
    - Var olan bir rezervasyonu silme.
 
-### 7. Get Booking By Date
-   - Belirli bir tarih aralığındaki rezervasyonları getirme.
+### 7. Get Booking By ID
+   - Belirli bir id degerindeki rezervasyonun detayli bilgilerini getirme.
 
 ### 8. Health Check
    - API'nin sağlığını kontrol etme.
