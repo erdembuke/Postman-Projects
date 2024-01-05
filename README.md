@@ -2,7 +2,7 @@
 
 Bu proje, **Postman** kullanılarak geliştirilmiş bir API test projesini içermektedir. Proje, [Restful Booker](https://restful-booker.herokuapp.com/) sitesindeki API'leri test etmek amacıyla oluşturulmuştur.
 
-## Proje Detayları
+# Proje 1 Detayları
 
 - **Geliştirici:** Erdem Büke
 - **Kullanılan Araç:** Postman
