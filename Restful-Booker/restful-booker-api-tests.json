@@ -73,7 +73,7 @@
 						}
 					}
 				},
-				"url": "https://restful-booker.herokuapp.com/auth"
+				"url": "{{mainURL}}/auth"
 			},
 			"response": []
 		},
