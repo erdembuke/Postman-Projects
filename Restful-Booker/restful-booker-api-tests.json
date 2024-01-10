@@ -478,7 +478,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "0831e477-b806-468c-a3cc-cdde7049f24d",
+				"id": "2b3ef5eb-b56b-42a3-89ed-3c9375508531",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -488,7 +488,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "48214b24-451a-4e00-8c85-d3366c28c53d",
+				"id": "5c3fcbaa-ae50-4a7f-8865-acb31cfae278",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -519,7 +519,8 @@
 		},
 		{
 			"key": "bookingToken",
-			"value": ""
+			"value": "",
+			"disabled": true
 		}
 	]
 }
