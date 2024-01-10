@@ -49,6 +49,16 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "15691185-1585-477c-8f66-8364b54e02bc",
+						"exec": [
+							"pm.environment.set(\"mainURL\", \"https://restful-booker.herokuapp.com\");"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"id": "2af56205-7ef3-452c-ac61-568da0c8dfdc",
@@ -154,7 +164,7 @@
 						}
 					}
 				},
-				"url": "https://restful-booker.herokuapp.com/booking"
+				"url": "{{mainURL}}/booking"
 			},
 			"response": []
 		},
@@ -198,12 +208,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restful-booker.herokuapp.com/booking/:id",
-					"protocol": "https",
+					"raw": "{{mainURL}}/booking/:id",
 					"host": [
-						"restful-booker",
-						"herokuapp",
-						"com"
+						"{{mainURL}}"
 					],
 					"path": [
 						"booking",
@@ -244,7 +251,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "https://restful-booker.herokuapp.com/booking"
+				"url": "{{mainURL}}/booking"
 			},
 			"response": []
 		},
@@ -318,12 +325,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://restful-booker.herokuapp.com/booking/:id",
-					"protocol": "https",
+					"raw": "{{mainURL}}/booking/:id",
 					"host": [
-						"restful-booker",
-						"herokuapp",
-						"com"
+						"{{mainURL}}"
 					],
 					"path": [
 						"booking",
@@ -396,12 +400,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://restful-booker.herokuapp.com/booking/:id",
-					"protocol": "https",
+					"raw": "{{mainURL}}/booking/:id",
 					"host": [
-						"restful-booker",
-						"herokuapp",
-						"com"
+						"{{mainURL}}"
 					],
 					"path": [
 						"booking",
@@ -452,12 +453,9 @@
 					}
 				],
 				"url": {
-					"raw": "https://restful-booker.herokuapp.com/booking/:id",
-					"protocol": "https",
+					"raw": "{{mainURL}}/booking/:id",
 					"host": [
-						"restful-booker",
-						"herokuapp",
-						"com"
+						"{{mainURL}}"
 					],
 					"path": [
 						"booking",
