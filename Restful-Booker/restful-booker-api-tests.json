@@ -113,7 +113,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Booking price assertion\", function() {\r",
-							"    pm.expect(response.totalprice).is.eql(pm.environment.get(\"bookingPrice}\"));\r",
+							"    pm.expect(response.booking.totalprice).is.eql(pm.environment.get(\"bookingPrice\"));\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Booking dates assertion\", function() {\r",
