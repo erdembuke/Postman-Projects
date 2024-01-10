@@ -12,29 +12,29 @@ These projects contain API test projects developed using **Postman**. The projec
 
 The project includes a total of **8 requests** (3 GET, 2 POST, 1 PATCH, 1 DELETE). Each of these requests is designed to test different features of the Restful Booker APIs.
 
-#### 1. Authentication
+#### 1. Health Check
+   - Checking the health of the API.
+     
+#### 2. Authentication
    - Token retrieval for user login.
 
-#### 2. Create Booking
+#### 3. Create Booking
    - Creating a new reservation.
 
-#### 3. Get Bookings
-   - Retrieving the IDs of registered bookings.
-
-#### 4. Update Booking
-   - Updating an existing reservation.
-
-#### 5. Partial Update Booking
-   - Partially updating specific fields of a reservation.
-
-#### 6. Delete Booking
-   - Deleting an existing reservation.
-
-#### 7. Get Booking By ID
+#### 4. Get Booking By ID
    - Retrieving detailed information for a reservation with a specific ID.
 
-#### 8. Health Check
-   - Checking the health of the API.
+#### 5. Get Bookings
+   - Retrieving the IDs of registered bookings.
+
+#### 6. Update Booking
+   - Updating an existing reservation.
+
+#### 7. Partial Update Booking
+   - Partially updating specific fields of a reservation.
+
+#### 8. Delete Booking
+   - Deleting an existing reservation.
 
 ## Steps to Run the Projects
 
