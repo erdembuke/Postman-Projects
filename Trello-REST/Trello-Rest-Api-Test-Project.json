@@ -10,13 +10,171 @@
 			"item": [
 				{
 					"name": "Create Workspace",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2f18dfad-de3e-4d0f-8a25-65042abbf4b6",
+								"exec": [
+									"pm.environment.set(\"workspaceName\", \"Workspace \" + parseInt(Math.random()*1000));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f3278615-acb0-4559-a917-3a79f97bccac",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let response = pm.response.json();\r",
+									"\r",
+									"pm.environment.set(\"workspaceID\", response.id);\r",
+									"\r",
+									"pm.test(\"Workspace name is equal!\", function () {\r",
+									"    pm.expect(response.displayName).is.eql(pm.environment.get(\"workspaceName\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "c8b02507-1b9d-45f9-9d09-f568ebb52b71",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.trello.com/1/organizations?displayName={{workspaceName}}&key={{trelloApiKey}}&token={{trelloApiToken}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"organizations"
+							],
+							"query": [
+								{
+									"key": "displayName",
+									"value": "{{workspaceName}}"
+								},
+								{
+									"key": "key",
+									"value": "{{trelloApiKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{trelloApiToken}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Workspace By ID",
+					"id": "6e7ec587-5189-40a5-ac55-5a33d262c4b6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.trello.com/1/organizations/:id?key={{trelloApiKey}}&token={{trelloApiToken}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"organizations",
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{trelloApiKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{trelloApiToken}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{workspaceID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Workspace",
+					"id": "14bc04f7-a7e2-4d48-a80d-cc62b86e100f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.trello.com/1/organizations/:id?key={{trelloApiKey}}&token={{trelloApiToken}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"organizations",
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{trelloApiKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{trelloApiToken}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{workspaceID}}"
+								}
+							]
+						}
 					},
 					"response": []
 				}
