@@ -384,7 +384,7 @@
 					"response": []
 				},
 				{
-					"name": "Update Workspace Copy",
+					"name": "Update Workspace Negative",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -401,16 +401,15 @@
 							"script": {
 								"id": "53125ee2-4812-45b3-8b3d-33aeee9f60ae",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"let response = pm.response.json();\r",
 									"\r",
-									"pm.test(\"Update is successfull, All fields are equal\", function () {\r",
-									"    pm.expect(response.id).is.eql(pm.environment.get(\"workspaceID\"));\r",
-									"    pm.expect(response.displayName).is.eql(pm.environment.get(\"workspaceUpdatedName\"));\r",
-									"});"
+									"pm.test(\"Invalid ID error recieved\", function () {\r",
+									"    pm.expect(pm.response.text()).is.eql(\"invalid id\")\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -457,9 +456,8 @@
 							],
 							"variable": [
 								{
-									"id": "540f439b-ed0a-4b3e-8353-3fa78d045b53",
 									"key": "id",
-									"value": "{{workspaceID}}"
+									"value": ""
 								}
 							]
 						}
@@ -581,6 +579,148 @@
 									"id": "f173251e-152a-4385-b181-bb7af87236ad",
 									"key": "id",
 									"value": "{{workspaceID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Workspace By ID Negative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2d0bc116-100c-4710-ba90-0c6e0b370856",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// ID olmadan gonderdigimiz icin bad request 400 geri gondereceginin assertion u\r",
+									"\r",
+									"pm.test(\"Invalid id error text in response body!\", function () {\r",
+									"    pm.expect(pm.response.text()).is.eql(\"invalid id\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f6762637-ae80-4cfa-8232-8e816390a8c8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.trello.com/1/organizations/:id?key={{trelloApiKey}}&token={{trelloApiToken}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"organizations",
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{trelloApiKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{trelloApiToken}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Workspace Field By Id Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "daef1462-4cec-471b-a0a6-8e069ad1b382",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Field fetch successfull!\", function () {\r",
+									"    pm.expect(response._value).is.eql(pm.environment.get(\"workspaceUpdatedName\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "460a7869-d946-4032-8ff6-3a65ce29602b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.trello.com/1/organizations/:id/:field?key={{trelloApiKey}}&token={{trelloApiToken}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"organizations",
+								":id",
+								":field"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{trelloApiKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{trelloApiToken}}"
+								}
+							],
+							"variable": [
+								{
+									"id": "6f0e0ec2-aa58-4350-b938-eb20a88676b8",
+									"key": "id",
+									"value": "{{workspaceID}}"
+								},
+								{
+									"id": "47ffbcf9-94c0-4d5c-8008-7d9f43844f30",
+									"key": "field",
+									"value": "displayName"
 								}
 							]
 						}
