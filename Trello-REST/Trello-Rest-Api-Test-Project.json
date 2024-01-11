@@ -7,7 +7,20 @@
 	"item": [
 		{
 			"name": "Organizations",
-			"item": [],
+			"item": [
+				{
+					"name": "New Request",
+					"id": "c8b02507-1b9d-45f9-9d09-f568ebb52b71",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "923aa9c8-9598-4959-a2b3-2a626135de74"
 		},
 		{
