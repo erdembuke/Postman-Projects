@@ -55,7 +55,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.trello.com/1/organizations?displayName={{workspaceName}}&key={{trelloApiKey}}&token={{trelloApiToken}}",
+							"raw": "https://api.trello.com/1/organizations?displayName={{workspaceDisplayName}}&key={{trelloApiKey}}&token={{trelloApiToken}}",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -69,7 +69,7 @@
 							"query": [
 								{
 									"key": "displayName",
-									"value": "{{workspaceName}}"
+									"value": "{{workspaceDisplayName}}"
 								},
 								{
 									"key": "key",
@@ -160,7 +160,7 @@
 							"script": {
 								"id": "ba1e0d09-7588-4567-adc6-b35ad6769764",
 								"exec": [
-									"pm.environment.set(\"workspaceUpdateName\", \"Updated\" + pm.environment.get(\"workspaceName\"));"
+									"pm.environment.set(\"workspaceUpdatedName\", \"Updated\" + pm.environment.get(\"workspaceDisplayName\"));"
 								],
 								"type": "text/javascript"
 							}
@@ -191,7 +191,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.trello.com/1/organizations/:id?key={{trelloApiKey}}&token={{trelloApiToken}}&displayName={{workspaceUpdateName}}",
+							"raw": "https://api.trello.com/1/organizations/:id?key={{trelloApiKey}}&token={{trelloApiToken}}&displayName={{workspaceUpdatedName}}",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -214,8 +214,7 @@
 								},
 								{
 									"key": "displayName",
-									"value": "{{workspaceUpdateName}}",
-									"type": "text"
+									"value": "{{workspaceUpdatedName}}"
 								}
 							],
 							"variable": [
