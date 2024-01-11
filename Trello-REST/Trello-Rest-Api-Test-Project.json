@@ -153,6 +153,58 @@
 					"response": []
 				},
 				{
+					"name": "Get Workspace Field By Id",
+					"id": "d34d8714-45b4-46a7-840a-ee3763326f4d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.trello.com/1/organizations/:id/:field?key={{trelloApiKey}}&token={{trelloApiToken}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"organizations",
+								":id",
+								":field"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{trelloApiKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{trelloApiToken}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{workspaceID}}"
+								},
+								{
+									"key": "field",
+									"value": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update Workspace",
 					"event": [
 						{
@@ -160,7 +212,7 @@
 							"script": {
 								"id": "ba1e0d09-7588-4567-adc6-b35ad6769764",
 								"exec": [
-									"pm.environment.set(\"workspaceUpdatedName\", \"Updated\" + pm.environment.get(\"workspaceDisplayName\"));"
+									"pm.environment.set(\"workspaceUpdatedName\", \"Updated \" + pm.environment.get(\"workspaceDisplayName\"));"
 								],
 								"type": "text/javascript"
 							}
@@ -172,6 +224,13 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Update is successfull, All fields are equal\", function () {\r",
+									"    pm.expect(response.id).is.eql(pm.environment.get(\"workspaceID\"));\r",
+									"    pm.expect(response.displayName).is.eql(pm.environment.get(\"workspaceUpdatedName\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
