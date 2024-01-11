@@ -405,11 +405,12 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
+									"let response = pm.response.json();\r",
 									"\r",
-									"pm.test(\"Invalid ID error recieved\", function () {\r",
-									"    pm.expect(pm.response.text()).is.eql(\"invalid id\")\r",
-									"});\r",
-									""
+									"pm.test(\"Display Name error recieved\", function() {\r",
+									"    pm.expect(response.message).is.eql(\"Display Name must be at least 1 character\");\r",
+									"    pm.expect(response.error).is.eql(\"ERROR\");\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -428,7 +429,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.trello.com/1/organizations/:id?key={{trelloApiKey}}&token={{trelloApiToken}}&displayName={{workspaceUpdatedName}}",
+							"raw": "https://api.trello.com/1/organizations/:id?key={{trelloApiKey}}&token={{trelloApiToken}}&displayName=",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -451,13 +452,13 @@
 								},
 								{
 									"key": "displayName",
-									"value": "{{workspaceUpdatedName}}"
+									"value": ""
 								}
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "{{workspaceID}}"
 								}
 							]
 						}
@@ -663,7 +664,11 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									""
+									"// zorunlu kisim id olmadan servis hata dondereceginin Assertion u\r",
+									"\r",
+									"pm.test(\"Invalid ID error recieved\", function () {\r",
+									"    pm.expect(pm.response.text()).is.eql(\"invalid id\")\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
