@@ -16,7 +16,7 @@
 							"script": {
 								"id": "2f18dfad-de3e-4d0f-8a25-65042abbf4b6",
 								"exec": [
-									"pm.environment.set(\"workspaceName\", \"Workspace \" + parseInt(Math.random()*1000));"
+									"pm.environment.set(\"workspaceDisplayName\", \"Workspace \" + parseInt(Math.random()*1000));"
 								],
 								"type": "text/javascript"
 							}
@@ -34,8 +34,8 @@
 									"\r",
 									"pm.environment.set(\"workspaceID\", response.id);\r",
 									"\r",
-									"pm.test(\"Workspace name is equal!\", function () {\r",
-									"    pm.expect(response.displayName).is.eql(pm.environment.get(\"workspaceName\"));\r",
+									"pm.test(\"Workspace name assert success!\", function () {\r",
+									"    pm.expect(response.displayName).is.eql(pm.environment.get(\"workspaceDisplayName\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -86,6 +86,27 @@
 				},
 				{
 					"name": "Get Workspace By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2d0bc116-100c-4710-ba90-0c6e0b370856",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Workspace found successfully!\", function () {\r",
+									"    pm.expect(response.displayName).is.eql(pm.environment.get(\"workspaceDisplayName\"))\r",
+									"    pm.expect(response.id).is.eql(pm.environment.get(\"workspaceID\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "6e7ec587-5189-40a5-ac55-5a33d262c4b6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -133,6 +154,30 @@
 				},
 				{
 					"name": "Update Workspace",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ba1e0d09-7588-4567-adc6-b35ad6769764",
+								"exec": [
+									"pm.environment.set(\"workspaceUpdateName\", \"Updated\" + pm.environment.get(\"workspaceName\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "53125ee2-4812-45b3-8b3d-33aeee9f60ae",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "14bc04f7-a7e2-4d48-a80d-cc62b86e100f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -146,7 +191,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.trello.com/1/organizations/:id?key={{trelloApiKey}}&token={{trelloApiToken}}",
+							"raw": "https://api.trello.com/1/organizations/:id?key={{trelloApiKey}}&token={{trelloApiToken}}&displayName={{workspaceUpdateName}}",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -166,6 +211,11 @@
 								{
 									"key": "token",
 									"value": "{{trelloApiToken}}"
+								},
+								{
+									"key": "displayName",
+									"value": "{{workspaceUpdateName}}",
+									"type": "text"
 								}
 							],
 							"variable": [
