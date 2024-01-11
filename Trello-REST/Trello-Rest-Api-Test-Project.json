@@ -162,7 +162,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Workspace By ID",
+					"name": "Get Workspace",
 					"event": [
 						{
 							"listen": "test",
@@ -230,7 +230,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Workspace Field By Id",
+					"name": "Get Workspace Field",
 					"event": [
 						{
 							"listen": "test",
@@ -244,7 +244,7 @@
 									"let response = pm.response.json();\r",
 									"\r",
 									"pm.test(\"Field fetch successfull!\", function () {\r",
-									"    pm.expect(response._value).is.eql(pm.environment.get(\"workspaceUpdatedName\"));\r",
+									"    pm.expect(response._value).is.eql(pm.environment.get(\"workspaceDisplayName\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -586,7 +586,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Workspace By ID Negative",
+					"name": "Get Workspace Negative",
 					"event": [
 						{
 							"listen": "test",
@@ -597,10 +597,8 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"// ID olmadan gonderdigimiz icin bad request 400 geri gondereceginin assertion u\r",
-									"\r",
-									"pm.test(\"Invalid id error text in response body!\", function () {\r",
-									"    pm.expect(pm.response.text()).is.eql(\"invalid id\");\r",
+									"pm.test(\"Invalid ID error recieved\", function () {\r",
+									"    pm.expect(pm.response.text()).is.eql(\"invalid id\")\r",
 									"});\r",
 									""
 								],
@@ -654,22 +652,18 @@
 					"response": []
 				},
 				{
-					"name": "Get Workspace Field By Id Copy",
+					"name": "Get Workspace Field Negative",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "daef1462-4cec-471b-a0a6-8e069ad1b382",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"let response = pm.response.json();\r",
-									"\r",
-									"pm.test(\"Field fetch successfull!\", function () {\r",
-									"    pm.expect(response._value).is.eql(pm.environment.get(\"workspaceUpdatedName\"));\r",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -713,12 +707,10 @@
 							],
 							"variable": [
 								{
-									"id": "6f0e0ec2-aa58-4350-b938-eb20a88676b8",
 									"key": "id",
-									"value": "{{workspaceID}}"
+									"value": ""
 								},
 								{
-									"id": "47ffbcf9-94c0-4d5c-8008-7d9f43844f30",
 									"key": "field",
 									"value": "displayName"
 								}
